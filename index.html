@@ -19,22 +19,23 @@
       var x = 'test';
       function myFunction() {
         x = document.getElementById("lName");
+      
+        $Lightning.use(
+          'c:testSearchApp', // name of the Lightning app
+          function () {
+            // Callback once framework and app loaded
+            $Lightning.createComponent(
+              'c:testSearch', // top-level component of your app
+              {}, // attributes to set on the component when created
+              'lightningout', // the DOM location to insert the component
+              function (cmp) {
+                // callback when component is created and active on the page
+              }
+            );
+          },
+          'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos' // Site endpoint
+        );
       }
-      $Lightning.use(
-        'c:testSearchApp', // name of the Lightning app
-        function () {
-          // Callback once framework and app loaded
-          $Lightning.createComponent(
-            'c:testSearch', // top-level component of your app
-            {}, // attributes to set on the component when created
-            'lightningout', // the DOM location to insert the component
-            function (cmp) {
-              // callback when component is created and active on the page
-            }
-          );
-        },
-        'https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos' // Site endpoint
-      );
     </script>
   </body>
 </html>
