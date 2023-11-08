@@ -16,9 +16,15 @@
 
     <script src="https://oneops-mbm--pocpega.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
     <script>
+      var visualForceFunction = function(event){
+        var myEventData1 = event.getParam("myEventData1");
+        var myEventData2 = event.getParam("myEventData2");
+        alert('Selected App: ' + myEventData1);
+        alert('Selected Dealer: ' + myEventData2);
+      };
       var x = 'test';
       function getOptions() {
-        x = document.getElementById("lName");
+        x = document.getElementById("lname");
         if(x===null || x==='')
           alert('Please enter a Last Name');
         else
@@ -31,7 +37,7 @@
                 {}, // attributes to set on the component when created
                 'lightningout', // the DOM location to insert the component
                 function (cmp) {
-                  // callback when component is created and active on the page
+                  $A.eventService.addHandler({ "event": "c:MyApplicationEvent", "handler" : eFunction});
                 }
               );
             },
