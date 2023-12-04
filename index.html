@@ -15,37 +15,33 @@
 <input type="button" onclick="getOptions()" value="Search Credit Apps">
 </form>
 <div id="lightningout"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://oneops-mbm--devdocw.sandbox.my.salesforce-sites.com/cos/lightning/lightning.out.js"></script>
-<script>
-      const apiUrl = 'https://oneops-mbm--devdocw.sandbox.my.salesforce.com/services/oauth2/token';
-      const data = {
-              username: 'John Doe',
-              password: 'johndoe@example.com',
-            };
-            
-      const requestOptions = {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(data),
-            };
-            
-      fetch(apiUrl, requestOptions)
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                return response.json();
-              })
-              .then(data => {
-                outputElement.textContent = JSON.stringify(data, null, 2);
-              })
-              .catch(error => {
-                console.error
-            
-            ('Error:', error);
-              });
+<script>      
+
+      var password = 'Kanika@13' + 'rhedR89htnqbmQHOrqJvFXHol'
+$.ajax({
+    type: 'GET',
+    url: 'https://oneops-mbm--devdocw.sandbox.my.salesforce.com/services/oauth2/token',
+    contentType: 'application/json',
+    dataType: 'json',
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader('grant_type','password'),
+        xhr.setRequestHeader('client_id',  '3MVG9qaMEyNEoADKnUJgCzJB8Mv0y5zTUHQXlGxd1a_LrMoeldeGSlZlwEMBfuBleDWCIsiajNgweXzIucy8k'),
+        xhr.setRequestHeader('client_secret', '77F9551AE50FECDF1110EDA036E3B44170BB168D3093EBDD1DD7D525C1FEE8DE'),
+        xhr.setRequestHeader('username', 'abhishek.sagar@oneops-mbm.com.devdocw'),
+        xhr.setRequestHeader('password', "password")
+    },
+    success: function(response) {
+        console.log('Successfully retrieved ' + response);
+        //Other logic here
+    },
+    error: function(response) {
+        console.log('Failed ' + response.status + ' ' + response.statusText);
+        //Other logic here
+    }
+});
+
       
       const handleSelected = function(event){
         const applicationId = event.detail.applicationId;
