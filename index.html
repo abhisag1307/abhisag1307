@@ -24,7 +24,7 @@ $.ajax({
     type: 'POST',
     url: 'https://oneops-mbm--devdocw.sandbox.my.salesforce.com/services/oauth2/token',
     contentType: 'application/json',
-    mode, 'no-cors',
+    mode: 'no-cors',
     dataType: 'json',
     beforeSend: function(xhr) {
         xhr.setRequestHeader('grant_type','password'),
